@@ -62,7 +62,7 @@ public class Employee {
     @Field(value = "speciality")
     private String speciality;
 
-    @Field(value = "retrainong")
+    @Field(value = "retraining")
     private List<String> retraining;
 
     @Field(value = "experience")
