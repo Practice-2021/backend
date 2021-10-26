@@ -2,14 +2,21 @@ package edu.citik.service;
 
 import java.util.List;
 
-public interface BackendService<Entity> {
-	void save(Entity entity);
+public interface BackendService<DTO> {
+	DTO create(DTO DTO);
 
-	Entity find(String criteria, String value);
+	DTO findById(String id);
 
-	List<Entity> findAll();
+	DTO findByCriteria(String criteria, String value);
 
-	void update(String criteria, String value, String updateCriteria, String updateValue);
+	List<DTO> findAll();
 
-	void remove(String criteria, String value);
+	Long updateById(String id, String updateCriteria, String updateValue);
+
+	Long updateByCriteria(String criteria, String value,
+						  String updateCriteria, String updateValue);
+
+	Long removeById(String id);
+
+	Long removeByCriteria(String criteria, String value);
 }

@@ -1,40 +1,69 @@
 package edu.citik.service.impl;
 
-import edu.citik.domain.Employee;
-import edu.citik.repository.impl.EmployeeRepository;
+import edu.citik.domain.EmployeeMapper;
+import edu.citik.domain.dto.EmployeeDto;
+import edu.citik.domain.entity.Employee;
+import edu.citik.repository.impl.EmployeeRepositoryImpl;
 import edu.citik.service.BackendService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
-public class EmployeeService implements BackendService<Employee> {
+public class EmployeeService implements BackendService<EmployeeDto> {
+	private static final String ID = "id";
+
 	@Autowired
-	private EmployeeRepository repository;
+	private EmployeeRepositoryImpl repository;
+	@Autowired
+	private EmployeeMapper employeeMapper;
 
 	@Override
-	public void save(Employee employee) {
-		repository.save(employee);
+	public EmployeeDto create(EmployeeDto employeeDto) {
+		Employee newEmployee = employeeMapper.mapToEntity(employeeDto);
+		Employee createdEmployee = repository.create(newEmployee);
+		return employeeMapper.mapToDto(createdEmployee);
 	}
 
 	@Override
-	public Employee find(String criteria, String value) {
-		return repository.find(criteria, value);
+	public EmployeeDto findById(String id) {
+		Employee employee = repository.find(ID, id);
+		return employeeMapper.mapToDto(employee);
 	}
 
 	@Override
-	public List<Employee> findAll() {
-		return repository.findAll();
+	public EmployeeDto findByCriteria(String criteria, String value) {
+		Employee employee = repository.find(criteria, value);
+		return employeeMapper.mapToDto(employee);
 	}
 
 	@Override
-	public void update(String criteria, String value, String updateCriteria, String updateValue) {
-		repository.update(criteria, value, updateCriteria, updateValue);
+	public List<EmployeeDto> findAll() {
+		List<Employee> employees = repository.findAll();
+		return employees.stream()
+				.map(employee -> employeeMapper.mapToDto(employee))
+				.collect(Collectors.toList());
 	}
 
 	@Override
-	public void remove(String criteria, String value) {
-		repository.remove(criteria, value);
+	public Long updateById(String id, String updateCriteria, String updateValue) {
+		return repository.update(ID, id, updateCriteria, updateValue);
+	}
+
+	@Override
+	public Long updateByCriteria(String criteria, String value, String updateCriteria, String updateValue) {
+		return repository.update(criteria, value, updateCriteria, updateValue);
+	}
+
+	@Override
+	public Long removeById(String id) {
+		return repository.remove(ID, id);
+	}
+
+	@Override
+	public Long removeByCriteria(String criteria, String value) {
+		return repository.remove(criteria, value);
 	}
 }
