@@ -29,6 +29,12 @@
         <!-- Graphql -->
         <graphql.version>5.0.2</graphql.version>
         <graphql.tools.version>5.2.4</graphql.tools.version>
+
+        <!-- Liquibase -->
+        <liquibase.version>4.5.0</liquibase.version>
+
+        <!-- Mongo -->
+        <mongoDriver.version>3.12.10</mongoDriver.version>
     </properties>
 
 
@@ -54,6 +60,18 @@
             <artifactId>spring-boot-starter-data-mongodb</artifactId>
         </dependency>
 
+        <!-- Liquibase -->
+        <dependency>
+            <groupId>org.liquibase</groupId>
+            <artifactId>liquibase-core</artifactId>
+            <version>${liquibase.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.liquibase.ext</groupId>
+            <artifactId>liquibase-mongodb</artifactId>
+            <version>${liquibase.version}</version>
+        </dependency>
+
         <!-- Graphql -->
         <dependency>
             <groupId>com.graphql-java</groupId>
@@ -70,7 +88,6 @@
             <artifactId>graphql-java-tools</artifactId>
             <version>${graphql.tools.version}</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/com.graphql-java-kickstart/playground-spring-boot-starter -->
         <dependency>
             <groupId>com.graphql-java-kickstart</groupId>
             <artifactId>playground-spring-boot-starter</artifactId>
