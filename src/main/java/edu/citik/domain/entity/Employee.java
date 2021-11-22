@@ -79,4 +79,13 @@ public class Employee {
 
 	@Field(value = "grants")
 	private List<String> grants;
+
+	@Field(value = "biography")
+	private String biography;
+
+	@Field(value = "requests")
+	private List<String> requests;
+
+	@Field(value = "department_link")
+	private String departmentLink;
 }
