@@ -21,6 +21,9 @@ type Employee {
     projects: [String]
     publications: [String]
     grants: [String]
+    biography: String
+    requests: [String]
+    departmentLink: String
 }
 
 # Сущность работника для сохранения
@@ -45,4 +48,7 @@ input EmployeeInput {
     projects: [String]
     publications: [String]
     grants: [String]
+    biography: String
+    requests: [String]
+    departmentLink: String
 }

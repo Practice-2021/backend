@@ -77,6 +77,15 @@
                                 },
                                 grants: {
                                     bsonType: "array",
+                                },
+                                biography: {
+                                bsonType: "string",
+                                },
+                                requests: {
+                                bsonType: "array",
+                                },
+                                departmentLink: {
+                                bsonType: "string",
                                 }
                         }
                     },

@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.util.List;
 
@@ -75,4 +76,13 @@ public class EmployeeDto {
 
 	@JsonProperty(value = "grants")
 	private List<String> grants;
+
+	@JsonProperty(value = "biography")
+	private String biography;
+
+	@JsonProperty(value = "requests")
+	private List<String> requests;
+
+	@JsonProperty(value = "department_link")
+	private String departmentLink;
 }
