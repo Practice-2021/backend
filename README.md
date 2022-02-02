@@ -20,3 +20,6 @@
 
 - Александр Тимофеев
 - Александр Коломиец
+
+### Инструкция по развертыванию
+https://docs.google.com/document/d/1wCLpVDn_JZ7_T9I6kMuZTcNmgL8JEGJoaaQnmyi4mD4/edit
